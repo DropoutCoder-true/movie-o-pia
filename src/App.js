@@ -1,24 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
-  let [counter, setCounter] = useState(0); 
-  
-  const increment = () => {
-    setCounter(counter + 1); 
-  }
+  const [count, setCount] = useState(0);
 
-  const decrement = () => {
-    if(counter === 0) return; 
-    setCounter(counter - 1); 
-  }
+  useEffect(() => {
+    setCount(100); 
+  }, [])
 
   return (
     <div className="App">
-      <button onClick={increment}>+</button>
+      <button onClick={() => setCount(prevCount => prevCount + 1)}> + </button>
       <h1>
-        {counter}
+        {count}
       </h1>
-      <button onClick={decrement}>-</button>
+      <button onClick={() => setCount(prevCount => prevCount - 1)}> - </button>
     </div>
   );
 }
